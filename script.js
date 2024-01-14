@@ -44,18 +44,30 @@ function loadingAnimation(){
         duration:0.5,
     })
 }
-
+var cursor=document.querySelector("#cursor")
 document.addEventListener("mousemove",function(dets){
-    gsap.to("#cursor", {
+    gsap.to(cursor, {
         left:dets.x,
         top:dets.y,
     })
 })
-document.querySelector("#child1").addEventListener("mouseenter",function(){
-    gsap.to("#cursor",{
+
+
+document.querySelectorAll(".child").forEach(function(elem){
+   elem.addEventListener("mouseenter",function(){
+    gsap.to(cursor,{
         transform:'translate(-50%,-50%) scale(1)'
     })
+   })
 })
+
+document.querySelectorAll(".child").forEach(function(elem){
+    elem.addEventListener("mouseleave",function(){
+     gsap.to(cursor,{
+         transform:'translate(-50%,-50%) scale(0)'
+     })
+    })
+ })
 loadingAnimation()
 videoCon()
 
